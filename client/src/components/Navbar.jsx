@@ -29,14 +29,9 @@ const AppNavbar = () => {
       {user?.token ?
         <Dropdown>
           <Trigger>
-            <User
-              bordered
-              as="button"
-              size="md"
-              color="gradient"
-              name={user?.name}
-              description={user?.email || ""}
-            />
+              <Button auto color="gradient" borderWeight="bold">
+                {user?.name}
+              </Button>
           </Trigger>
           <Menu color="primary" aria-label="Actions" onAction={signOut}>
             <Item color="error" textValue={"Logout"} className="text-center"><Text color="error" >Sign Out</Text></Item>

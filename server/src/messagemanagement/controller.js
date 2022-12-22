@@ -3,12 +3,12 @@ const Message = require("../../models/messages");
 const saveMessage = async (props) => {
     try{
         const { to, from, message } = props;
-        await Message.create({
+        const msg = await Message.create({
             to,
             from,
             message
         })
-        return true;
+        return msg;
     }catch(err){
         throw new Error(err);
     }
@@ -17,17 +17,19 @@ const saveMessage = async (props) => {
 const message = async (req, res) => {
     try{
         const baseUrl = req.baseUrl;
-        const { page } = req.query;
+        const page = parseInt(req.query.page);
+        const userId = req.query.userId;
         const { _id } = req.user;
         const options = {
             page: page,
             limit: 10,
-            select: "message to from",
+            select: "message to from createdAt",
             sort: {createdAt: -1}
         };
-        const messages = await Message.paginate({ $or: [{to: _id}, {from: _id}]}, options);
-        let next = `${baseUrl}?page=${page+1}`;
-        let previous = `${baseUrl}?page=${page-1}`;
+        const query = {$or: [{to: userId, from: _id}, {from: userId, to: _id}]};
+        const messages = await Message.paginate(query, options);
+        let next = `${baseUrl}?page=${page+1}&userId=${userId}`;
+        let previous = `${baseUrl}?page=${page-1}&userId=${userId}`;
         if(messages.page == 1){
             previous = null;
         }

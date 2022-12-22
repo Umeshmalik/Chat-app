@@ -29,8 +29,8 @@ io.on("connection", (socket) => {
         console.log("User gone.")
     })
     socket.on("message in", async (msg) => {
-        await saveMessage(msg);
-        io.in([msg.to, msg.from]).emit("message out", msg);
+        const res = await saveMessage(msg);
+        io.in([msg.to, msg.from]).emit("message out", res);
     })
 })
 
