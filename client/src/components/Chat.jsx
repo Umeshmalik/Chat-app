@@ -35,14 +35,14 @@ const Chat = () => {
         })
         messageRef?.current?.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                sendMsg
+                sendMsg()
             }
         })
         return () => {
             socket.emit("offline", user);
             messageRef?.current?.removeEventListener("keydown", (e) => {
                 if (e.key === "Enter") {
-                    sendMsg
+                    sendMsg()
                 }
             })
         }
