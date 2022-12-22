@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navbar, Text, Button, User, Dropdown } from "@nextui-org/react";
+import { Navbar, Text, Button, Dropdown } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
 import { UserContext } from "../context/userContext";
@@ -29,9 +29,9 @@ const AppNavbar = () => {
       {user?.token ?
         <Dropdown>
           <Trigger>
-              <Button auto color="gradient" borderWeight="bold">
+              <Dropdown.Button auto color="gradient" borderWeight="bold">
                 {user?.name}
-              </Button>
+              </Dropdown.Button>
           </Trigger>
           <Menu color="primary" aria-label="Actions" onAction={signOut}>
             <Item color="error" textValue={"Logout"} className="text-center"><Text color="error" >Sign Out</Text></Item>

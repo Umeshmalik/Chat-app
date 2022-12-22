@@ -109,7 +109,7 @@ const Chat = () => {
             </Card.Header>
             <Card.Body ref={grid}>
                 <Grid.Container gap={3} md={12} sm={12} className="flex-col">
-                    {list?.items?.map((it, idx) => <Grid className={`p-3 w-1/2 ${userId !== it.from ? "self-end" : ""}`} key={idx}>
+                    {list?.items?.map((it, idx) => <Grid className={`p-3 md:w-1/2 ${userId !== it.from ? "self-end" : ""}`} key={idx}>
                         <Card>
                             <Card.Header css={{ paddingBottom: 0 }}>
                                 <Text h5 css={{ textGradient: `45deg, ${userId !== it.from ? "$blue600" : "$pink600"} -20%, ${userId === it.from ? "$blue600" : "$pink600"} 50%` }} weight="bold">
