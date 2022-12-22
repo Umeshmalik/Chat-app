@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Card, Text, Button, Loading } from "@nextui-org/react";
 import { z } from "zod";
 
-import api from "lib/api";
-import { NextInput } from "lib/NextComp";
+import api from "../../lib/api";
+import { NextInput } from "../../lib/NextComp";
 
 const errors = {
     name: "Name should contains at least 2 characters.",

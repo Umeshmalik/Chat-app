@@ -3,8 +3,8 @@ import { NextUIProvider } from "@nextui-org/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from './components/Navbar';
 import UserContext from "./context/userContext";
-import Loading from 'lib/Loading';
 
+const Loading = lazy(() => import('../lib/Loading'));
 const App = lazy(() => import("./App"));
 const Signup = lazy(() => import('./components/Signup'));
 const Signin = lazy(() => import("./components/Signin"));

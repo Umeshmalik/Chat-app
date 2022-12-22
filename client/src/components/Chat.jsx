@@ -3,9 +3,9 @@ import { Card, Input, Text, Grid, Loading } from "@nextui-org/react";
 import io from "socket.io-client";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { SendButton, SendIcon } from "lib/SendIcons";
+import { SendButton, SendIcon } from "../../lib/SendIcons";
 import { UserContext } from "../context/userContext";
-import api from "lib/api";
+import api from "../../lib/api";
 
 const endpoint = import.meta.env.VITE_SERVER_ENDPOINT;
 const socket = io(endpoint);

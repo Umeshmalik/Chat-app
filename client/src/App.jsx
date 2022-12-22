@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { Card, Input, Text, Table, useAsyncList } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
-import api from "lib/api";
+import api from "../lib/api";
 
 const App = () => {
     const columns = [ { name: "Name", uid: "name" } ];
