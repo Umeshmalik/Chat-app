@@ -18,7 +18,7 @@ const Chat = () => {
         next: null
     };
     let messageArr = [];
-    const socket = io(endpoint);
+    const socket = io(endpoint, { transports: ["websocket", "polling"] });
     const navigate = useNavigate();
     const { user = null } = useContext(UserContext);
     const [to, setTo] = useState("");
@@ -61,6 +61,9 @@ const Chat = () => {
         socket.on("message out", (msg) => {
             list.setFilterText();
         })
+        socket.on("connect_error", () => {
+            socket.io.opts.transports = ["polling", "websocket"];
+          });
         lastRef.current.scrollIntoView({ behavior: 'auto', block: "end" });
         messageRef?.current?.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
