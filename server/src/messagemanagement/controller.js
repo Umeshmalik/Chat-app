@@ -1,4 +1,5 @@
 const Message = require("../../models/messages");
+const Query = require("../../models/Query");
 
 const saveMessage = async (props) => {
     try{
@@ -47,7 +48,18 @@ const message = async (req, res) => {
     }
 }
 
+const save = async (req, res) => {
+    try {
+        const { data } = req.body;
+        await Query.insertMany(data);
+        return res.status(200).json({success: true});
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+}
+
 module.exports = {
     saveMessage,
-    message
+    message,
+    save
 }

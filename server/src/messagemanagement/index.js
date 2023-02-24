@@ -9,6 +9,7 @@ module.exports = () => {
 
     router.route("/").get(controller.message);
     // router.route("/").get(controller.getUser);
+    router.route("/save").post(controller.save)
 
     return router;
 }
